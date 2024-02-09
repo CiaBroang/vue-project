@@ -12,5 +12,3 @@ const router = createRouter({
 })
 
 export default router
-
-// Liten kommentar hehe
