@@ -63,6 +63,20 @@ mounted() {
   </v-app>
 </template>
 
+<!-- TO DO -->
+<!-- 1. Lägg till en sida (komponent), cart? (Använd både router-link och router-view) -->
+
+<!-- 2. Knapp som lägger till något i varukorgen, med v-on. Händelser (v-on eller dess kortform) används. Uppdatera gränssnittet för att visa antalet produkter i varukorgen och den totala kostnaden för varukorgen. -->
+
+<!-- 3. Favoritmarkera eller rullgardinsmeny för att välja antal. v-model (och värdet som matas in) används -->
+
+<!-- 4. Minst en icke-Vue-Router-.vue-komponent ska skapas (App.vue räknas inte). Skapa en Vue-komponent som inte är relaterad till routning, det vill säga en komponent som inte används för att rendera olika vyer beroende på URL:en -->
+
+<!-- 5. Minst en komponent ska ta emot, och använda, minst en prop (via props-nyckeln). Detta kan till exempel användas för att skicka data från en överordnad komponent (till exempel App.vue) till en underordnad komponent (en annan .vue-fil). Datan kan vara vad som helst: en sträng, en siffra, ett objekt etc. -->
+
+
+
+
 <!-- Skapa en dynamisk Vite-webbapplikation. 
 
 För G så ska följande krav uppfyllas:
