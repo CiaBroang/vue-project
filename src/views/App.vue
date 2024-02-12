@@ -2,33 +2,6 @@
 import { RouterLink, RouterView } from 'vue-router'
 </script>
 
-<script>
-import axios from 'axios';
-
-export default {
-  data() {
-    return {
-    products: []
-  };
-},
-methods: {
-  fetchData() {
-    axios.get('https://fakestoreapi.com/products')
-    .then(response => {
-      this.products = response.data;
-    })
-    .catch(error => {
-      console.log('error fetching data:', error);
-    });
-  }
-},
-mounted() {
-  this.fetchData();
-  }
-};
-</script>
-
-
 <template>
   <v-app id="app">
     <v-app-bar extended>
@@ -37,34 +10,20 @@ mounted() {
       <v-app-bar-title>Shop</v-app-bar-title>
 
       <v-spacer></v-spacer>
-
-      <v-btn icon="mdi-dots-vertical">
-      </v-btn>
+      <div class="text-center">
+    <v-btn :to="{name: 'cart'}">
+      Varukorg
+    </v-btn>
+    </div>
     </v-app-bar>
 
     <v-main>
-      <v-container>
-        <v-row>
-          <v-col
-            v-for="product in products"
-            :key="product.id"
-            cols="4"
-          >
-            <v-card height="200">
-              <v-img :src="product.image" height="100"></v-img>
-              <v-card-title>{{ product.title }}</v-card-title>
-              <p v-if="product.rating.rate >= 4">Populär produkt!</p>
-              <v-card-subtitle>{{ product.price }} kr</v-card-subtitle>
-            </v-card>
-          </v-col>
-        </v-row>
-      </v-container>
+      <router-view/>
     </v-main>
   </v-app>
 </template>
 
 <!-- TO DO -->
-<!-- 1. Lägg till en sida (komponent), cart? (Använd både router-link och router-view) -->
 
 <!-- 2. Knapp som lägger till något i varukorgen, med v-on. Händelser (v-on eller dess kortform) används. Uppdatera gränssnittet för att visa antalet produkter i varukorgen och den totala kostnaden för varukorgen. -->
 
