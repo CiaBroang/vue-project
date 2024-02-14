@@ -1,5 +1,6 @@
 <script>
 import axios from 'axios';
+import { useCartStore } from '@/stores/CartStore';
 
 export default {
   data() {
@@ -16,8 +17,11 @@ export default {
         .catch(error => {
           console.log('error fetching data:', error);
         });
+    },
+    addToCart(product) {
+      useCartStore().addToCart(product);
     }
-  },
+},
   mounted() {
     this.fetchData();
   }
@@ -38,7 +42,7 @@ export default {
             <v-card-subtitle v-else style="line-height: 1.2em;">&nbsp;</v-card-subtitle>
             <div style="margin-top: auto;">
               <v-card-subtitle style="font-weight: bold; color: #212121;">{{ product.price }} EUR</v-card-subtitle>
-              <v-btn size="small" color="indigo-darken-3" style="margin: 1.2em;">KÖP</v-btn>
+              <v-btn @click="addToCart(product)" size="small" color="indigo-darken-3" style="margin: 1.2em;">KÖP</v-btn>
             </div>
           </container>
         </v-card>

@@ -1,5 +1,19 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from 'vue-router'
+import { useCartStore } from '@/stores/CartStore';
+import { computed } from 'vue'; // Importera 'computed' från Vue för att skapa beräknade egenskaper
+
+export default {
+  setup() {
+    const cartStore = useCartStore(); //använder 'useCartStore' så jag får tillgång till min Pinia
+    const cartItemCount = computed(() => cartStore.cartItemCount); //här skapas en beräknad egenskap som hämtar antalet varor i varukorgen från Pinia
+
+
+    return { //returnerar cartItemCount så den kan användas
+      cartItemCount
+    };
+  }
+};
 </script>
 
 <template>
@@ -12,7 +26,7 @@ import { RouterLink, RouterView } from 'vue-router'
       <v-spacer></v-spacer>
       <div class="text-center">
     <v-btn :to="{name: 'cart'}">
-      Varukorg
+      Varukorg ({{ cartItemCount }})
     </v-btn>
     </div>
     </v-app-bar>
@@ -25,13 +39,13 @@ import { RouterLink, RouterView } from 'vue-router'
 
 <!-- TO DO -->
 
-<!-- 2. Knapp som lägger till något i varukorgen, med v-on. Händelser (v-on eller dess kortform) används. Uppdatera gränssnittet för att visa antalet produkter i varukorgen och den totala kostnaden för varukorgen. -->
+<!-- Favoritmarkera eller rullgardinsmeny för att välja antal. v-model (och värdet som matas in) används -->
 
-<!-- 3. Favoritmarkera eller rullgardinsmeny för att välja antal. v-model (och värdet som matas in) används -->
+<!-- Minst en icke-Vue-Router-.vue-komponent ska skapas (App.vue räknas inte). Skapa en Vue-komponent som inte är relaterad till routning, det vill säga en komponent som inte används för att rendera olika vyer beroende på URL:en -->
 
-<!-- 4. Minst en icke-Vue-Router-.vue-komponent ska skapas (App.vue räknas inte). Skapa en Vue-komponent som inte är relaterad till routning, det vill säga en komponent som inte används för att rendera olika vyer beroende på URL:en -->
+<!-- Minst en komponent ska ta emot, och använda, minst en prop (via props-nyckeln). Detta kan till exempel användas för att skicka data från en överordnad komponent (till exempel App.vue) till en underordnad komponent (en annan .vue-fil). Datan kan vara vad som helst: en sträng, en siffra, ett objekt etc. -->
 
-<!-- 5. Minst en komponent ska ta emot, och använda, minst en prop (via props-nyckeln). Detta kan till exempel användas för att skicka data från en överordnad komponent (till exempel App.vue) till en underordnad komponent (en annan .vue-fil). Datan kan vara vad som helst: en sträng, en siffra, ett objekt etc. -->
+<!-- Kolla på Vue's provide/inject-funktioner. Istället för att upprepa samma kod på varje sida för att få Pinia och cartItemCount värdet-->
 
 
 
