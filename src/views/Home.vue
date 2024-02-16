@@ -21,7 +21,7 @@ export default {
     addToCart(product) {
       useCartStore().addToCart(product);
     }
-},
+  },
   mounted() {
     this.fetchData();
   }
@@ -46,6 +46,9 @@ export default {
             </div>
           </container>
         </v-card>
+      </v-col>
+      <v-col v-for="product in products" :key="product.id" cols="auto">
+
       </v-col>
     </v-row>
   </v-container>
