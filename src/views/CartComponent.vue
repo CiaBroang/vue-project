@@ -1,24 +1,27 @@
 <script>
-import { useCartStore } from '@/stores/CartStore';
+import { useCartStore, useUserStore } from '@/stores/CartStore';
 import { computed } from 'vue';
 import imageCardHorizontal from '@/components/ImageCardHorizontal.vue';
-import TextInputComponent from '@/components/InputComponent.vue';
+import InputComponent from '@/components/InputComponent.vue';
 
 export default {
   setup() {
     const cartStore = useCartStore();
     const cartProducts = computed(() => cartStore.cartProducts);
-
-    console.log(cartProducts.value);
-
-
+    const userStore = useUserStore();
+    const firstname = computed(() => userStore.firstname)
+    const email = computed(() => userStore.email)
+    const lastname = computed(() => userStore.lastname)
     return {
-      cartProducts
+      cartProducts,
+      firstname,
+      lastname,
+      email,
     };
   },
   components: {
     imageCardHorizontal,
-    TextInputComponent
+    InputComponent
   },
   data: () => ({
     valid: false
@@ -28,7 +31,6 @@ export default {
 
 <template>
   <h1>Kassa</h1>
-
   <v-stepper :items="['Granska', 'Leverans', 'Betalning']">
     <template v-slot:item.1>
       <v-card title="Din order" flat>
@@ -48,14 +50,16 @@ export default {
 
     <template v-slot:item.2>
       <v-card title="Ange leveransadress" flat>
-        <TextInputComponent />
-        <p> Namn: {{ firstname }} </p>
+        <InputComponent />
       </v-card>
     </template>
 
     <template v-slot:item.3>
       <v-card title="Välj betalningssätt" flat>
+        <p>Namn: {{ firstname }} {{ lastname }}</p>
+        <p>Email: {{ email }}</p>
         Dina betalningsalternativ:
+        .....
       </v-card>
     </template>
   </v-stepper>
