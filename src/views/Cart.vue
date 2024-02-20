@@ -1,7 +1,8 @@
 <script>
 import { useCartStore } from '@/stores/CartStore';
 import { computed } from 'vue';
-import imageCardHorizontal from '@/components/imageCardHorizontal.vue';
+import imageCardHorizontal from '@/components/ImageCardHorizontal.vue';
+import TextInputComponent from '@/components/InputComponent.vue';
 
 export default {
   setup() {
@@ -16,17 +17,21 @@ export default {
     };
   },
   components: {
-    imageCardHorizontal
+    imageCardHorizontal,
+    TextInputComponent
   },
+  data: () => ({
+    valid: false
+  })
 };
 </script>
 
 <template>
-  <h1>Cart</h1>
+  <h1>Kassa</h1>
 
   <v-stepper :items="['Granska', 'Leverans', 'Betalning']">
     <template v-slot:item.1>
-      <v-card title="Step 1" flat>
+      <v-card title="Din order" flat>
         <template v-if="cartProducts.length > 0">
           <div v-for="product in cartProducts" :key="product.id">
             <imageCardHorizontal :product="product" />
@@ -42,11 +47,16 @@ export default {
     </template>
 
     <template v-slot:item.2>
-      <v-card title="Step 2" flat>...</v-card>
+      <v-card title="Ange leveransadress" flat>
+        <TextInputComponent />
+        <p> Namn: {{ firstname }} </p>
+      </v-card>
     </template>
 
     <template v-slot:item.3>
-      <v-card title="Step 3" flat>...</v-card>
+      <v-card title="Välj betalningssätt" flat>
+        Dina betalningsalternativ:
+      </v-card>
     </template>
   </v-stepper>
 </template>

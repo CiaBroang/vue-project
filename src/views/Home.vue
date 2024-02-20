@@ -52,5 +52,5 @@ export default {
       </v-col>
     </v-row>
   </v-container>
-  <v-pagination :length="4"></v-pagination>
+  <v-pagination :length="3"></v-pagination>
 </template>

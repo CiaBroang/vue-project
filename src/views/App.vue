@@ -21,7 +21,7 @@ export default {
     <v-app-bar extended>
       <v-app-bar-nav-icon></v-app-bar-nav-icon>
 
-      <v-app-bar-title @click="$router.push('/home')">
+      <v-app-bar-title @click="$router.push('/')">
         The shop
       </v-app-bar-title>
 
@@ -45,12 +45,6 @@ Favoritmarkera eller rullgardinsmeny för att välja antal. v-model (och värdet
 
 Kolla på Vue's provide/inject-funktioner. Istället för att upprepa samma kod på varje sida för att få Pinia och cartItemCount värdet
 
-Attributinterpolering (v-bind eller dess kortform) används (key-props (relaterade till v-for) räknas inte)
-v-model (och värdet som matas in) används
-Minst en komponent ska ta emot, och använda, minst en prop (via props-nyckeln)
-Minst en beräknad egenskap (computed) används
-Minst en bevakare (watch) används
-Alla props ska vara typsäkra
 Minst ett custom event används (skickas och tas emot)
 Använd Pinia så att flera komponenter kan hämta information därifrån
 Använd minst ett Vue Router-adressparametervärde -->
